@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  ocpp:
+    build: .
+    ports:
+      - "8089:9000"
+      - "8087:8090"
+    tty: true
+    restart: unless-stopped
+    container_name: OCPP_SERVICE
+#    image: ocpp.ufsm.io/ocpp:prod
+    volumes:
+      - /home/henrique/logs:/app/logs

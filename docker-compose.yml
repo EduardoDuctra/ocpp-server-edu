@@ -1,13 +1,23 @@
 version: "3.9"
+
 services:
   ocpp:
     build: .
+
+    environment:
+      - SEND_DATA_TO_FW=1
+      - URL_SERVER=https://procreate-opacity-wrist.ngrok-free.dev/backend
+      - PATH_LOG=./logs/server.log
+
     ports:
       - "8089:9000"
       - "8087:8090"
+
     tty: true
     restart: unless-stopped
     container_name: OCPP_SERVICE
-#    image: ocpp.ufsm.io/ocpp:prod
+
+    # image: ocpp.ufsm.io/ocpp:prod
+
     volumes:
       - /home/henrique/logs:/app/logs
